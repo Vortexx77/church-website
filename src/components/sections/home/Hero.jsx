@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 const Hero = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
   const overlayRef = useRef(null);
   const textContainerRef = useRef(null);
 
@@ -97,7 +98,7 @@ const Hero = () => {
     <section className="relative h-[90vh] text-white bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900">
       {/* Background video */}
       <div
-        className={`absolute inset-0 w-full h-full overflow-hidden transition-opacity duration-1000 ${isVideoLoaded ? "opacity-100" : "opacity-0"
+        className={`absolute inset-0 w-full h-full overflow-hidden transition-opacity duration-1000 ${isVideoLoaded && !videoError ? "opacity-100" : "opacity-0"
           }`}
       >
         <video
@@ -107,10 +108,18 @@ const Hero = () => {
           loop
           playsInline
           onLoadedData={handleVideoLoad}
-          onError={() => console.log("Video failed to load, using fallback background")}
+          onError={() => {
+            console.log("Video failed to load, using fallback background");
+            setVideoError(true);
+          }}
         >
           <source src={`${import.meta.env.BASE_URL}media/Video.mp4`} type="video/mp4" />
         </video>
+        {videoError && (
+          <div className="absolute inset-0 flex items-center justify-center bg-red-900/70 text-white text-lg font-bold">
+            Video failed to load.
+          </div>
+        )}
       </div>
 
       {/* Overlay */}
