@@ -86,7 +86,7 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white font-sans text-gray-800">
+    <div className="flex flex-col min-h-screen bg-white font-sans text-gray-800 overflow-x-hidden max-w-full">
       <Suspense fallback={<div className="h-20 bg-white"></div>}>
         <Navbar isScrolled={isScrolled} />
       </Suspense>

@@ -8,15 +8,12 @@ const Hero = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const overlayRef = useRef(null);
   const textContainerRef = useRef(null);
-  const buttonsRef = useRef(null);
+
   const tilesRef = useRef(null);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVideoLoaded(true);
-    }, 2000); // Delay to hide YouTube's initial branding
-    return () => clearTimeout(timer);
-  }, []);
+  const handleVideoLoad = () => {
+    setIsVideoLoaded(true);
+  };
 
   const heroTexts = [
     "We Welcome You",
@@ -28,7 +25,7 @@ const Hero = () => {
   // Split text into words and then into letters
   const splitText = (text) => {
     return text.split(" ").map((word, wordIndex) => (
-      <div key={wordIndex} className="inline-flex mx-2">
+      <div key={wordIndex} className="inline-flex mx-1 sm:mx-2">
         {word.split("").map((letter, letterIndex) => (
           <span
             key={`${wordIndex}-${letterIndex}`}
@@ -97,21 +94,23 @@ const Hero = () => {
   }, [currentTextIndex]);
 
   return (
-    <section className="relative h-[90vh] text-white">
+    <section className="relative h-[90vh] text-white bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900">
       {/* Background video */}
       <div
-        className={`absolute inset-0 w-full h-full overflow-hidden transition-opacity duration-1000 ${
-          isVideoLoaded ? "opacity-100" : "opacity-0"
-        }`}
+        className={`absolute inset-0 w-full h-full overflow-hidden transition-opacity duration-1000 ${isVideoLoaded ? "opacity-100" : "opacity-0"
+          }`}
       >
-        <iframe
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%]"
-          src="https://www.youtube.com/embed/mqHle1MtWq0?autoplay=1&mute=1&loop=1&playsinline=1&controls=0&start=0&playlist=mqHle1MtWq0&modestbranding=1&enablejsapi=1"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-          title="Church worship background video"
-        ></iframe>
+        <video
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          onLoadedData={handleVideoLoad}
+          onError={() => console.log("Video failed to load, using fallback background")}
+        >
+          <source src="/church-website/media/Video.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* Overlay */}
@@ -124,7 +123,7 @@ const Hero = () => {
             {/* Animated Text */}
             <div
               ref={textContainerRef}
-              className="relative h-32 md:h-40 lg:h-48 flex items-center justify-center w-full text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-wider uppercase flex-wrap px-4"
+              className="relative h-32 md:h-40 lg:h-48 flex items-center justify-center w-full text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-wide sm:tracking-wider uppercase flex-wrap px-2 sm:px-4 max-w-full overflow-hidden"
             >
               {splitText(heroTexts[currentTextIndex])}
             </div>
@@ -160,15 +159,6 @@ const Hero = () => {
   );
 };
 
-// Custom stroke-only text style
-const styles = `
-  .stroke-text {
-    -webkit-text-stroke: 1px white;
-    color: transparent;
-    text-shadow: none;
-  }
-`;
-
 const Tile = ({
   icon,
   title,
@@ -181,8 +171,8 @@ const Tile = ({
   const bg = featured
     ? "bg-white text-gray-800"
     : subtle
-    ? "bg-[#F5F5F5] text-gray-700"
-    : "bg-white";
+      ? "bg-[#F5F5F5] text-gray-700"
+      : "bg-white";
   const titleColor = featured ? "text-[#C9A87C]" : "text-gray-900";
   return (
     <Link
@@ -200,10 +190,3 @@ const Tile = ({
 };
 
 export default Hero;
-
-// Inject custom CSS
-// if (typeof document !== 'undefined') {
-//   const styleSheet = document.createElement("style");
-//   styleSheet.innerText = styles;
-//   document.head.appendChild(styleSheet);
-// }

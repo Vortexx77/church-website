@@ -34,7 +34,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white/95'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-300 max-w-full overflow-x-hidden ${scrolled ? 'bg-white shadow-md' : 'bg-white/95'}`}>
       {/* Top utility bar */}
       <div className="hidden md:block bg-[#1f1f1f] text-white/90 text-xs">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,15 +67,15 @@ const Navbar = () => {
       </div>
 
       {/* Main navigation bar */}
-      <div className={`${scrolled ? 'py-2' : 'py-4'} bg-white`}> 
-        <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+      <div className={`${scrolled ? 'py-2' : 'py-4'} bg-white max-w-full overflow-x-hidden`}> 
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
+          <div className="flex items-center justify-between min-w-0">
             {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link to="/" className="flex items-end">
-                <span className="text-xl font-extrabold tracking-widest text-gray-900">KAMPALA</span>
-                <span className="text-xl font-extrabold tracking-widest text-[#C9A87C] ml-2">COMMUNITY</span>
-                <span className="text-xl font-extrabold tracking-widest text-gray-900 ml-2">CHURCH</span>
+            <div className="flex-shrink-0 min-w-0">
+              <Link to="/" className="flex items-end flex-wrap sm:flex-nowrap">
+                <span className="text-lg sm:text-xl font-extrabold tracking-wide sm:tracking-widest text-gray-900">KAMPALA</span>
+                <span className="text-lg sm:text-xl font-extrabold tracking-wide sm:tracking-widest text-[#C9A87C] ml-1 sm:ml-2">COMMUNITY</span>
+                <span className="text-lg sm:text-xl font-extrabold tracking-wide sm:tracking-widest text-gray-900 ml-1 sm:ml-2">CHURCH</span>
               </Link>
             </div>
 

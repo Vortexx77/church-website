@@ -37,7 +37,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div ref={rootRef} className="min-h-screen overflow-x-hidden overflow-y-hidden">
+    <div ref={rootRef} className="min-h-screen overflow-x-hidden">
       <Hero />
       <div className="h-24 md:h-28" />
       <QuickLinks />
