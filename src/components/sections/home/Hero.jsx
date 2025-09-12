@@ -134,7 +134,7 @@ const Hero = () => {
       {/* Tiles under hero (unchanged) */}
       <div
         ref={tilesRef}
-        className="absolute left-1/2 -translate-x-1/2 -bottom-20 w-[95%] md:w-[85%] z-20"
+        className="absolute left-1/2 -translate-x-1/2 bottom-[-10vh] md:-bottom-20 w-[95%] md:w-[85%] z-20"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-xl overflow-hidden">
           <Tile
@@ -178,13 +178,13 @@ const Tile = ({
     <Link
       {...rest}
       to={to}
-      className={`${bg} py-10 px-8 md:py-12 md:px-10 text-center flex flex-col items-center hover:bg-gray-50 transition-colors`}
+      className={`${bg} py-4 px-3 sm:py-6 sm:px-4 md:py-12 md:px-10 text-center flex flex-col items-center hover:bg-gray-50 transition-colors`}
     >
-      <div className="mb-4">{icon}</div>
-      <h3 className={`text-xl md:text-2xl font-bold mb-2 ${titleColor}`}>
+      <div className="mb-3 sm:mb-4">{icon}</div>
+      <h3 className={`text-base sm:text-lg md:text-2xl font-bold mb-1 sm:mb-2 ${titleColor}`}>
         {title}
       </h3>
-      <span className="text-sm md:text-base">{description}</span>
+      <span className="text-xs sm:text-sm md:text-base">{description}</span>
     </Link>
   );
 };
