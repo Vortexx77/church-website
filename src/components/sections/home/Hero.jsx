@@ -5,11 +5,18 @@ import { gsap } from "gsap";
 
 const Hero = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const overlayRef = useRef(null);
   const textContainerRef = useRef(null);
   const buttonsRef = useRef(null);
   const tilesRef = useRef(null);
-  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVideoLoaded(true);
+    }, 2000); // Delay to hide YouTube's initial branding
+    return () => clearTimeout(timer);
+  }, []);
 
   const heroTexts = [
     "We Welcome You",
@@ -92,16 +99,20 @@ const Hero = () => {
   return (
     <section className="relative h-[90vh] text-white">
       {/* Background video */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
-        src={`${import.meta.env.BASE_URL}video.mp4`}
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-label="Church worship background video"
-      />
+      <div
+        className={`absolute inset-0 w-full h-full overflow-hidden transition-opacity duration-1000 ${
+          isVideoLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <iframe
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%]"
+          src="https://www.youtube.com/embed/mqHle1MtWq0?autoplay=1&mute=1&loop=1&playsinline=1&controls=0&start=0&playlist=mqHle1MtWq0&modestbranding=1&enablejsapi=1"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          title="Church worship background video"
+        ></iframe>
+      </div>
 
       {/* Overlay */}
       <div ref={overlayRef} className="absolute inset-0 bg-black/70" />
