@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Handshake, Landmark } from "lucide-react";
 import { gsap } from "gsap";
-import video from "/church-website/media/Video.mp4";
+import video from "../../../assets/videos/Video.mp4";
 
 const Hero = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
