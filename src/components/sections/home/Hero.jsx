@@ -109,7 +109,7 @@ const Hero = () => {
           onLoadedData={handleVideoLoad}
           onError={() => console.log("Video failed to load, using fallback background")}
         >
-          <source src="/church-website/media/Video.mp4" type="video/mp4" />
+          <source src={`${import.meta.env.BASE_URL}media/Video.mp4`} type="video/mp4" />
         </video>
       </div>
 

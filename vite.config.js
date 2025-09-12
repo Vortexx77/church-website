@@ -35,7 +35,8 @@ export default defineConfig({
     sourcemap: true,
   },
   // Configure the base URL for the app
-  base: '/church-website/',
+  // Use an environment variable for dynamic base URL, defaulting to '/' for Vercel
+  base: process.env.VITE_APP_BASE_URL || '/',
   // Configure the public directory
   publicDir: 'public',
 });
