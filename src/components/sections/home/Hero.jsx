@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Handshake, Landmark } from "lucide-react";
 import { gsap } from "gsap";
-import heroVideo from "../../../assets/videos/video.mp4";
 
 const Hero = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -96,7 +95,7 @@ const Hero = () => {
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover"
-        src={heroVideo}
+        src="/video.mp4"
         autoPlay
         muted
         loop

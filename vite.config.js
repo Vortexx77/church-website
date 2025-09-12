@@ -35,7 +35,7 @@ export default defineConfig({
     sourcemap: true,
   },
   // Configure the base URL for the app
-  base: '/',
+  base: '/church-website/',
   // Configure the public directory
   publicDir: 'public',
 });
