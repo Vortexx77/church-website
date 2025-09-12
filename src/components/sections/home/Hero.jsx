@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Handshake, Landmark } from "lucide-react";
 import { gsap } from "gsap";
+import video from "/church-website/media/Video.mp4";
 
 const Hero = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -109,7 +110,7 @@ const Hero = () => {
           onLoadedData={handleVideoLoad}
           onError={() => console.log("Video failed to load, using fallback background")}
         >
-          <source src="/church-website/media/Video.mp4" type="video/mp4" />
+          <source src={video} type="video/mp4" />
         </video>
       </div>
 
