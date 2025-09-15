@@ -123,7 +123,7 @@ const Hero = () => {
             {/* Animated Text */}
             <div
               ref={textContainerRef}
-              className="relative h-32 md:h-40 lg:h-48 flex items-center justify-center w-full text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-wide sm:tracking-wider uppercase flex-wrap px-2 sm:px-4 max-w-full overflow-hidden"
+              className="relative h-32 md:h-40 lg:h-48 flex items-center justify-center w-full text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-wide sm:tracking-wider uppercase flex-wrap px-2 sm:px-4 max-w-full overflow-hidden mb-20"
             >
               {splitText(heroTexts[currentTextIndex])}
             </div>
@@ -134,9 +134,9 @@ const Hero = () => {
       {/* Tiles under hero (unchanged) */}
       <div
         ref={tilesRef}
-        className="absolute left-1/2 -translate-x-1/2 -bottom-20 w-[95%] md:w-[85%] z-20"
+        className="absolute left-1/2 -translate-x-1/2 bottom-0 md:-bottom-20 w-[95%] md:w-[85%] z-20 mb-[-50px] md:mb-0"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-xl overflow-hidden">
+        <div className="grid grid-cols-2 shadow-2xl rounded-xl overflow-hidden">
           <Tile
             data-hero-tile
             icon={<Handshake className="h-8 w-8 text-[#C9A87C]" />}
@@ -178,7 +178,7 @@ const Tile = ({
     <Link
       {...rest}
       to={to}
-      className={`${bg} py-10 px-8 md:py-12 md:px-10 text-center flex flex-col items-center hover:bg-gray-50 transition-colors`}
+      className={`${bg} py-6 px-4 md:py-12 md:px-10 text-center flex flex-col items-center hover:bg-gray-50 transition-colors`}
     >
       <div className="mb-4">{icon}</div>
       <h3 className={`text-xl md:text-2xl font-bold mb-2 ${titleColor}`}>

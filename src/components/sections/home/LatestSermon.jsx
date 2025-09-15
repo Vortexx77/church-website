@@ -12,21 +12,21 @@ const demoSermons = [
     title: 'The Power of Faith',
     speaker: 'Pastor John Doe',
     date: 'May 15, 2025',
-    image: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://picsum.photos/seed/sermon1/800/600',
   },
   {
     id: 2,
     title: 'Walking in Grace',
     speaker: 'Pastor Jane Smith',
     date: 'May 08, 2025',
-    image: 'https://images.unsplash.com/photo-1511715284804-5dc3f86d39f0?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://picsum.photos/seed/sermon2/800/600',
   },
   {
     id: 3,
     title: 'Hope in the Storm',
     speaker: 'Pastor Mark Lee',
     date: 'Apr 29, 2025',
-    image: 'https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://picsum.photos/seed/sermon3/800/600',
   },
 ];
 
